@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -29,7 +28,7 @@ public class Person {
 	};
 
 	public Person(String prenom, String nom, String genre, String mail,
-			String date, String profilFb, List<Home> homes) {
+			String date, String profilFb) {
 		super();
 		this.prenom = prenom;
 		this.nom = nom;
@@ -37,7 +36,7 @@ public class Person {
 		this.mail = mail;
 		this.date = date;
 		this.profilFb = profilFb;
-		this.homes = homes;
+		// this.homes = homes;
 	}
 
 	@Id
@@ -100,7 +99,7 @@ public class Person {
 
 	@OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
 	public List<Home> getHomes() {
-		return homes;
+		return this.homes;
 	}
 
 	public void setHomes(List<Home> homes) {
@@ -109,6 +108,6 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", prenom=" + prenom + "nom=" + nom + "";
+		return "Person [ID = " + id + ", Prénom = " + prenom + ", Nom = " + nom + ", E-mail = " + mail +", Genre = "+ genre + ", Date de naissance = "+ date + ", Profil Facebook = "+ profilFb+"]";
 	}
 }
